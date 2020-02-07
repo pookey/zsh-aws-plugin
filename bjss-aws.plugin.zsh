@@ -1,4 +1,4 @@
-# based on origional work by Mike Peechy @ BJSS
+# based on original work by Mike Peachey @ BJSS
 # modified into ZSH plugin and a few tweeks made by Ian P. Christian @ BJSS
 # please feedback modifications to this ZSH plugin to <ian.christian@bjss.com>
 
