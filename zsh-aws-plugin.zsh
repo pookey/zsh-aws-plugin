@@ -6,7 +6,7 @@
 # prompt requires p9k or p10k
 # in ~/.zshrc
 #
-#   plugins=(bjss-aws)
+#   plugins=(zsh-aws)
 #
 # in ~/.p10k.zsh
 #
