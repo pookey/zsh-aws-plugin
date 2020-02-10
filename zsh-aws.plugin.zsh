@@ -246,10 +246,14 @@ function prompt_aws_prompt_info() {
   local aws_profile="${AWS_PROFILE:-$AWS_DEFAULT_PROFILE}"
 
   if [[ -n "$aws_profile" ]]; then
-    local expiry_ts=`date -j -f "%Y-%m-%dT%H:%M:%SZ" $AWS_MFA_EXPIRY +"%s"`
-    local now_ts=`date -j +"%s"`
-    if [[ now_ts -ge expiry_ts ]]; then
-      p10k segment -f 204 -t "${aws_profile} (expired MFA)" -i AWS_ICON -r 
+    if [[ -n "$AWS_MFA_EXPIRY" ]]; then  
+      local expiry_ts=`date -j -f "%Y-%m-%dT%H:%M:%SZ" $AWS_MFA_EXPIRY +"%s"`
+      local now_ts=`date -j +"%s"`
+      if [[ now_ts -ge expiry_ts ]]; then
+        p10k segment -f 204 -t "${aws_profile} (expired MFA)" -i AWS_ICON -r 
+      else
+	      p10k segment -f 3 -t "${aws_profile} (active MFA)" -i AWS_ICON -r 
+      fi;
     else
       p10k segment -f 3 -t ${aws_profile} -i AWS_ICON -r 
     fi;
